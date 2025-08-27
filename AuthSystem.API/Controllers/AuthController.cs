@@ -37,6 +37,19 @@ namespace AuthSystem.API.Controllers
                 return StatusCode(500, new { message = "An error occurred while retrieving users" });
             }
         }
+        [HttpGet("getUser")]
+        public async Task<IActionResult> GetUserById(Guid userId)
+        {
+            try
+            {
+                var user = await _authApplicationService.GetUserByIdAsync(userId);
+                return Ok(user);
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, new { message = "An error occurred while retrieving users" });
+            }
+        }
 
         [HttpGet("me")]
         public async Task<IActionResult> GetCurrentUser()
@@ -61,7 +74,7 @@ namespace AuthSystem.API.Controllers
             }
         }
 
-
+        [AllowAnonymous]
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginRequest request)
         {
@@ -91,7 +104,8 @@ namespace AuthSystem.API.Controllers
                 return StatusCode(500, new { message = "An error occurred during login" });
             }
         }
-
+      
+        [AllowAnonymous]
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterRequest request)
         {

@@ -12,7 +12,7 @@ namespace AuthSystem.Application.Interfaces
     {
         Task<AuthResponse> LoginAsync(LoginRequest request);
         Task<AuthResponse> RegisterAsync(RegisterRequest request);
-        Task<UserDto?> GetUserByIdAsync(int userId);
+        Task<UserDto?> GetUserByIdAsync(Guid userId);
         Task<IEnumerable<UserDto?>> GetUsersAsync(int page, int pageSize);
         Task<bool> ValidateTokenAsync(string token);
     }

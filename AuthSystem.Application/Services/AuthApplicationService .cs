@@ -111,7 +111,7 @@ namespace AuthSystem.Application.Services
             }
         }
 
-        public async Task<UserDto?> GetUserByIdAsync(int userId)
+        public async Task<UserDto?> GetUserByIdAsync(Guid userId)
         {
             var user = await _unitOfWork.Users.GetByIdAsync(userId);
             return user != null ? MapToUserDto(user) : null;

@@ -79,8 +79,7 @@ namespace AuthSystem.Infrastructure.Services
                 return await Task.FromResult(false);
             }
         }
-
-        public async Task<int?> GetUserIdFromTokenAsync(string token)
+        public async Task<Guid?> GetUserIdFromTokenAsync(string token)
         {
             try
             {
@@ -88,17 +87,40 @@ namespace AuthSystem.Infrastructure.Services
                 var jwtToken = tokenHandler.ReadJwtToken(token);
 
                 var userIdClaim = jwtToken.Claims.FirstOrDefault(x => x.Type == "UserId");
-                if (userIdClaim != null && int.TryParse(userIdClaim.Value, out int userId))
+
+                if (userIdClaim != null && Guid.TryParse(userIdClaim.Value, out Guid userId))
                 {
-                    return await Task.FromResult(userId);
+                    return await Task.FromResult<Guid?>(userId);
                 }
 
-                return await Task.FromResult<int?>(null);
+                return await Task.FromResult<Guid?>(null);
             }
             catch
             {
-                return await Task.FromResult<int?>(null);
+                return await Task.FromResult<Guid?>(null);
             }
         }
+
+        //public async Task<Guid?> GetUserIdFromTokenAsync(string token)
+        //{
+        //    try
+        //    {
+        //        var tokenHandler = new JwtSecurityTokenHandler();
+        //        var jwtToken = tokenHandler.ReadJwtToken(token);
+
+        //        var userIdClaim = jwtToken.Claims.FirstOrDefault(x => x.Type == "UserId");
+        //       // if (userIdClaim != null && int.TryParse(userIdClaim.Value, out Guid userId))
+        //        if (userIdClaim != null)
+        //        {
+        //            return await Task.FromResult(userIdClaim.Value);
+        //        }
+
+        //        return await Task.FromResult<Guid?>(null);
+        //    }
+        //    catch
+        //    {
+        //        return await Task.FromResult<Guid?>(null);
+        //    }
+        //}
     }
 }
