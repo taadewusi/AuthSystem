@@ -12,6 +12,5 @@ namespace AuthSystem.Domain.Interfaces.Services
         string GenerateToken(User user);
         Task<bool> ValidateTokenAsync(string token);
         Task<Guid?> GetUserIdFromTokenAsync(string token);
-        //Task<int?> GetUserIdFromTokenAsync(string token);
     }
 }

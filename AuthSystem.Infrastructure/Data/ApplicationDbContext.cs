@@ -22,8 +22,6 @@ namespace AuthSystem.Infrastructure.Data
             {
                 entity.HasKey(e => e.Id);
 
-                //entity.Property(e => e.Id)
-                //    .UseIdentityColumn();
 
                 entity.Property(e => e.Id)
                     .ValueGeneratedNever();

@@ -101,26 +101,6 @@ namespace AuthSystem.Infrastructure.Services
             }
         }
 
-        //public async Task<Guid?> GetUserIdFromTokenAsync(string token)
-        //{
-        //    try
-        //    {
-        //        var tokenHandler = new JwtSecurityTokenHandler();
-        //        var jwtToken = tokenHandler.ReadJwtToken(token);
-
-        //        var userIdClaim = jwtToken.Claims.FirstOrDefault(x => x.Type == "UserId");
-        //       // if (userIdClaim != null && int.TryParse(userIdClaim.Value, out Guid userId))
-        //        if (userIdClaim != null)
-        //        {
-        //            return await Task.FromResult(userIdClaim.Value);
-        //        }
-
-        //        return await Task.FromResult<Guid?>(null);
-        //    }
-        //    catch
-        //    {
-        //        return await Task.FromResult<Guid?>(null);
-        //    }
-        //}
+        
     }
 }
