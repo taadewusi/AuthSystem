@@ -1,11 +1,6 @@
 ﻿using AuthSystem.Domain.Interfaces.Repositories;
 using AuthSystem.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore.Storage;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AuthSystem.Infrastructure.Repositories
 {

@@ -1,9 +1,9 @@
-﻿using AuthSystem.Application.Interfaces;
+﻿using AuthSystem.Application.DTOs.Requests;
+using AuthSystem.Application.Interfaces;
 using AuthSystem.Domain.Exceptions;
 using AuthSystem.Domain.Interfaces.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using AuthSystem.Application.DTOs.Requests;
 namespace AuthSystem.API.Controllers
 {
     [ApiController]
@@ -104,7 +104,7 @@ namespace AuthSystem.API.Controllers
                 return StatusCode(500, new { message = "An error occurred during login" });
             }
         }
-      
+
         [AllowAnonymous]
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterRequest request)
